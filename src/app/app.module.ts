@@ -6,20 +6,35 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { NavbarModule } from './navbar/navbar.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { SignupComponent } from './signup/signup.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SigninComponent } from './signin/signin.component';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    HomepageComponent
+    HomepageComponent,
+    NavbarComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     NavbarModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule,
+    ReactiveFormsModule, //sử dụng reactive form để tạo form trang đăng ký/đăng nhập
+    MatFormFieldModule,   // ✅ Material Form Field
+    MatInputModule       // ✅ Material Input
   ],
   providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }
