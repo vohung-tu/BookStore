@@ -1,0 +1,46 @@
+<!-- <div class="container" >
+    <div class="signin-container">
+      <h2>Sign In</h2>
+    
+      <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+        <div class="email-input">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="Enter your email">
+            <mat-error *ngIf="signinForm.get('email')?.invalid && signinForm.get('email')?.touched">
+              Please enter a valid email
+            </mat-error>
+          </mat-form-field>
+        
+        </div>
+        <div class="password-input">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Enter your password"> 
+            <button class="btn-visibility" mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button">
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            
+            <mat-error *ngIf="signinForm.get('password')?.invalid && signinForm.get('password')?.touched">
+              Password must be at least 6 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+      
+        
+
+        <button mat-raised-button type="submit" [disabled]="signinForm.invalid">
+          Sign In
+        </button>
+    
+        <ng-container>or Sign in with</ng-container>
+        <div class="social-login">
+          <button mat-button class="face-lgin"><mat-icon class="mdi mdi-facebook"></mat-icon>Facebook</button> 
+          <button mat-button class="google-lgin"><mat-icon class="mdi mdi-google-plus"></mat-icon>Google</button>
+        </div>
+    
+        <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
+      </form>
+    </div>
+    
+  </div> -->

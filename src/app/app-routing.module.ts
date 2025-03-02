@@ -2,10 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent }, // Trang chủ
-  { path: 'home', component: HomepageComponent }, // Định tuyến đến Home
+  { 
+    path: 'home', 
+    component: HomepageComponent 
+  }, // Trang chủ
+  {
+    path: '', 
+    redirectTo: '/home', 
+    pathMatch: 'full' 
+  },
+  { 
+    path: 'signup', 
+    component: SignupComponent,
+    title:'Sign Up' 
+  }, // Trang đăng ký 
 ];
 
 @NgModule({
