@@ -1,0 +1,82 @@
+<header class="header" >
+  <div class="header__top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-8">
+          <div class="header__top__right">
+            <div class="header__top__right__social">
+              <a href="/"><i class="mdi mdi-account"></i></a>
+              <a href="" ><i class="mdi mdi-youtube"></i></a>
+              <a href="" ><i class="mdi mdi-instagram"></i></a>
+              <a href=""><i class="mdi mdi-skype"></i></a>
+
+            <div class="header__top__right__language">
+              <button class="btn-change-language" mat-button [matMenuTriggerFor]="languageMenu">🇻🇳 Vietnam</button>
+              <mat-menu #languageMenu="matMenu">
+                <button mat-menu-item (click)="changeLanguage('vi')">🇻🇳 Vietnam</button>
+                <button mat-menu-item (click)="changeLanguage('en')">🇬🇧 English</button>
+              </mat-menu>
+            </div>
+
+            <div class="sign_up">
+              <!-- <p style="color: #000;font-size: 18px">Xin chào,
+                <a href="/" style="text-decoration: none; font-size: 18px">
+                <strong>Ha Tran</strong></a>
+                <a href="/" class="logOut" style="text-decoration: none; font-size: 18px"><i class="mdi mdi-sign-out-alt"></i></a>
+              </p> -->
+              <a class="logIn" mat-menu-item (click)="changeLanguage('vi')">SIGN IN</a>
+              <a class="signUp" mat-menu-item (click)="changeLanguage('en')">SIGN UP</a>
+
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="header__logo">
+            <a href=""><img src="" alt=""></a>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <nav class="header__menu">
+          <ul>
+            <li class="active"><a href="">Trang chủ</a></li>
+
+            <li><a href="#">Danh Mục Sản Phẩm</a>
+              <ul class="header__menu__dropdown">
+                <li><a href="">Sách trong nước</a></li>
+                <li><a href="#">VPP - Dụng cụ học sinh</a></li>
+                <li><a href="#">Đồ Chơi</a></li>
+                <li><a href="#">Làm Đẹp - Sức khỏe</a></li>
+              </ul>
+            </li>
+            <li><a href="">Giới thiệu</a></li>
+            <li><a href="">Tin tức</a></li>
+            <li><a href="">Nạp số dư</a></li>
+            <li><a href="">Liên hệ</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-1">
+        <div class="header__cart">
+          <ul>
+
+            <li><a href=""><i class="mdi mdi-cart-outline"></i>
+                <!-- <span id="cart-total">
+                0
+              </span> -->
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="humberger__open">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+</header>
