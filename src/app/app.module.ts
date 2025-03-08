@@ -14,6 +14,7 @@ import { SigninComponent } from './signin/signin.component';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import Swiper from 'swiper';
 
 @NgModule({
   declarations: [
@@ -32,8 +33,9 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     RouterModule,
     ReactiveFormsModule, //sử dụng reactive form để tạo form trang đăng ký/đăng nhập
-    MatFormFieldModule,   // ✅ Material Form Field
-    MatInputModule       // ✅ Material Input
+    MatFormFieldModule,   // Material Form Field
+    MatInputModule,
+    Swiper,     
   ],
   providers: [],
 })

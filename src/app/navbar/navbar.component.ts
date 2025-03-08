@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterModule } from '@angular/router';
 
@@ -8,7 +10,14 @@ import { Router, RouterModule } from '@angular/router';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   standalone: true,
-  imports: [MatMenuModule, MatButtonModule, MatIconModule, RouterModule],
+  imports: [
+    MatMenuModule, 
+    MatButtonModule,
+    MatFormFieldModule, 
+    MatIconModule,
+    MatInputModule, 
+    RouterModule
+  ],
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
