@@ -13,4 +13,11 @@ export class BooksService {
   getBook(): Observable<BookDetails[]> {
     return of(MOCK_BOOKS);
   }
+
+  getBookById(id: number): Observable<BookDetails | undefined> {
+    // Tìm sách trong mảng MOCK_BOOKS
+    const book = MOCK_BOOKS.find(b => b.book_id === id);
+    // Trả về Observable
+    return of(book);
+  }
 }
