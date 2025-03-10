@@ -3,21 +3,29 @@ import { interval, Subscription } from 'rxjs';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { RouterModule } from '@angular/router';
+import { BookDetails } from '../../model/books-details.model';
+import { BooksService } from '../../service/books.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   standalone: true,
   imports: [
+    CommonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatMomentDateModule
+    MatMomentDateModule, 
+    RouterModule
   ],
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit, OnDestroy {
-  constructor() {}
-
+  constructor(
+    private bookService: BooksService
+  ) {}
+  books: BookDetails[] = [];
   // Đặt thời gian kết thúc flash sale (ví dụ: 30 00:00:00)
   flashSaleEnd: Date = new Date('2025-03-10T00:00:00');
 
@@ -34,6 +42,10 @@ export class HomepageComponent implements OnInit, OnDestroy {
       this.updateCountdown();
     });
     this.updateCountdown();
+
+    this.bookService.getBook().subscribe((data) => {
+      this.books = data;
+    });
   }
 
   updateCountdown(): void {
