@@ -6,9 +6,9 @@
       <!-- Họ tên -->
       <mat-form-field appearance="outline">
         <mat-label>Họ tên</mat-label>
-        <input matInput formControlName="fullName" placeholder="Nhập họ tên">
-        <mat-error *ngIf="signupForm.get('fullName')
-        ?.invalid && signupForm.get('fullName')?.touched">
+        <input matInput formControlName="full_name" placeholder="Nhập họ tên">
+        <mat-error *ngIf="signupForm.get('full_name')
+        ?.invalid && signupForm.get('full_name')?.touched">
           Vui lòng nhập họ tên
         </mat-error>
       </mat-form-field>
@@ -42,12 +42,12 @@
         <mat-label>Nhập lại mật khẩu</mat-label>
         <input matInput
                [type]="hideConfirmPassword ? 'password' : 'text'"
-               formControlName="confirmPassword">
+               formControlName="re_password">
         <button mat-icon-button matSuffix type="button"
                 (click)="hideConfirmPassword = !hideConfirmPassword">
           <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
-        <mat-error *ngIf="signupForm.hasError('passwordMismatch') && signupForm.get('confirmPassword')?.touched">
+        <mat-error *ngIf="signupForm.hasError('passwordMismatch') && signupForm.get('re_password')?.touched">
           Mật khẩu không khớp
         </mat-error>
       </mat-form-field>
@@ -55,10 +55,10 @@
       <!-- Ngày sinh -->
       <mat-form-field appearance="outline">
         <mat-label>Ngày sinh</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Chọn ngày sinh">
+        <input matInput [matDatepicker]="picker" formControlName="birth" placeholder="Chọn ngày sinh">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="signupForm.get('dob')?.invalid && signupForm.get('dob')?.touched">
+        <mat-error *ngIf="signupForm.get('birth')?.invalid && signupForm.get('birth')?.touched">
           Vui lòng chọn ngày sinh
         </mat-error>
       </mat-form-field>
@@ -81,8 +81,8 @@
       <!-- Điện thoại -->
       <mat-form-field appearance="outline">
         <mat-label>Điện thoại</mat-label>
-        <input matInput type="tel" formControlName="phone" placeholder="Nhập số điện thoại">
-        <mat-error *ngIf="signupForm.get('phone')?.invalid && signupForm.get('phone')?.touched">
+        <input matInput type="tel" formControlName="phone_number" placeholder="Nhập số điện thoại">
+        <mat-error *ngIf="signupForm.get('phone_number')?.invalid && signupForm.get('phone_number')?.touched">
           Vui lòng nhập số điện thoại
         </mat-error>
       </mat-form-field>
@@ -101,7 +101,7 @@
       <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">
         Đăng Ký
       </button>
-  
+      <p>Bạn chưa có tài khoản? <a routerLink="/signin">Đăng Nhập</a></p>
     </form>
   </div>
 </div>

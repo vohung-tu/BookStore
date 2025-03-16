@@ -1,23 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
 import { BookDetails } from '../model/books-details.model';
-import { MOCK_BOOKS } from '../model/mock-books';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // Đảm bảo service được cung cấp toàn cục
 })
 export class BooksService {
+  private readonly apiUrl = 'http://localhost:3000/books'; //  Dùng `readonly` để tránh thay đổi URL
 
-  constructor() { }
-  
-  getBook(): Observable<BookDetails[]> {
-    return of(MOCK_BOOKS);
+  constructor(private http: HttpClient) {}
+
+ // Lấy danh sách sách từ backend và ánh xạ _id -> id
+  getBooks(): Observable<BookDetails[]> {
+    return this.http.get<BookDetails[]>(this.apiUrl).pipe(
+      map(books =>
+        books.map(book => ({
+          ...book,
+          id: book._id // Chuyển _id thành id
+        }))
+      )
+    );
   }
 
-  getBookById(id: number): Observable<BookDetails | undefined> {
-    // Tìm sách trong mảng MOCK_BOOKS
-    const book = MOCK_BOOKS.find(b => b.book_id === id);
-    // Trả về Observable
-    return of(book);
+// Lấy chi tiết sách theo ID từ backend và ánh xạ _id -> id
+  getBookById(id: string): Observable<BookDetails> {
+    return this.http.get<BookDetails>(`${this.apiUrl}/${id}`).pipe(
+      map(book => ({
+        ...book,
+        id: book._id // Chuyển _id thành id
+      }))
+    );
   }
 }

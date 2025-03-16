@@ -1,5 +1,6 @@
 export interface BookDetails {
-  book_id: number,
+  id?: string,
+  _id:string,
   title: string,
   description: string,
   author: string,
@@ -7,5 +8,6 @@ export interface BookDetails {
   flashsale_price: number,
   discount_percent: number,
   coverImage: string, //link
-  publishedDate: Date 
+  publishedDate: Date,
+  quatity?: number 
 }

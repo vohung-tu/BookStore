@@ -15,6 +15,8 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import Swiper from 'swiper';
+import { provideHttpClient } from '@angular/common/http';
+import { BooksService } from './service/books.service';
 
 @NgModule({
   declarations: [
@@ -35,8 +37,12 @@ import Swiper from 'swiper';
     ReactiveFormsModule, //sử dụng reactive form để tạo form trang đăng ký/đăng nhập
     MatFormFieldModule,   // Material Form Field
     MatInputModule,
-    Swiper,     
+    Swiper
+       
   ],
-  providers: [],
+  providers: [
+    BooksService,
+    provideHttpClient()
+  ],
 })
 export class AppModule { }

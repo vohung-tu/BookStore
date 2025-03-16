@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -34,16 +35,18 @@ export class SignupComponent {
   hidePassword = true;           // Ẩn/hiện mật khẩu
   hideConfirmPassword = true;    // Ẩn/hiện xác nhận mật khẩu
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService) {
     this.signupForm = this.fb.group({
-      fullName: ['', Validators.required],
+      full_name: ['', Validators.required],
       username: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-      dob: ['', Validators.required],        // Ngày sinh
+      re_password: ['', Validators.required],
+      birth: ['', Validators.required],        // Ngày sinh
       address: [''],                        // Địa chỉ
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
+      phone_number: ['', Validators.required],
     }, {
       validators: this.passwordMatchValidator // Kiểm tra mật khẩu khớp
     });
@@ -52,16 +55,18 @@ export class SignupComponent {
   // Hàm kiểm tra mật khẩu có khớp không
   passwordMatchValidator(form: FormGroup) {
     const password = form.get('password')?.value;
-    const confirmPassword = form.get('confirmPassword')?.value; 
+    const re_password = form.get('re_password')?.value; 
     //?. cho phép gọi .value chỉ khi form.get('password') không phải null/undefined. Nếu form.get('password') là null, nó sẽ không báo lỗi, thay vào đó trả về undefined.
-    return password === confirmPassword ? null : { passwordMismatch: true };
+    return password === re_password ? null : { passwordMismatch: true };
   }
 
   // Submit form
   onSubmit(): void {
     if (this.signupForm.valid) {
-      console.log('Form Data:', this.signupForm.value);
-      // Xử lý logic đăng ký, call API,...
+      this.authService.signup(this.signupForm.value).subscribe(
+        (res) => alert('Đăng ký thành công'),
+        (err) => alert('Đăng ký thất bại')
+      );
     }
   }
 

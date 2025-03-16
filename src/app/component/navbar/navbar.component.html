@@ -3,8 +3,8 @@
     <div class="container">
       <div class="header__top__left">
         <div class="logo">
-          <a href="/">
-            <img src="assets/images/logo.png" alt="" width="180px" height="100px">
+          <a routerLink="/home">
+            <img src="assets/images/logo.png" alt="" width="180px" height="90px">
           </a>
           <div class="category-btn">
             <button class="btn-change-category" mat-button [matMenuTriggerFor]="category">
@@ -28,13 +28,11 @@
       </div>
 
       <div class="header__top__right">
-        <div class="header__top__right__social">
-          <a routerLink="/cart" class="cart-btn">
+        <div class="header__top__right__cart">
+          <a routerLink="/cart" class="cart-btn" mat-button>
             <mat-icon>shopping_cart</mat-icon>
           </a>
-          <a routerLink="/userInfo" class="account-btn">
-            <mat-icon>account_circle</mat-icon>
-          </a>
+        </div>
 
         <div class="header__top__right__language">
           <button class="btn-change-language" mat-button [matMenuTriggerFor]="languageMenu">🇻🇳 Vietnam</button>
@@ -45,10 +43,33 @@
         </div>
 
         <div class="sign_up">
-          <a class="logIn" mat-button routerLink="/signin">ĐĂNG NHẬP</a>
-          <a class="signUp" mat-button routerLink="/signup">ĐĂNG KÝ</a>
+          <ng-container *ngIf="isLoading$ | async; else loadedState">
+            <mat-spinner diameter="24"></mat-spinner> <!-- Spinner khi loading -->
+          </ng-container>
+        
+          <ng-template #loadedState>
+            <ng-container *ngIf="isLoggedIn$ | async; else notLoggedIn">
+              <button mat-button [matMenuTriggerFor]="userMenu">
+                <mat-icon>account_circle</mat-icon>
+              </button>
+        
+              <mat-menu #userMenu="matMenu">
+                <button mat-menu-item routerLink="/userInfo">
+                  <mat-icon>person</mat-icon> Thông tin cá nhân
+                </button>
+                <button mat-menu-item (click)="signout()">
+                  <mat-icon>logout</mat-icon> Đăng xuất
+                </button>
+              </mat-menu>
+            </ng-container>
+        
+            <ng-template #notLoggedIn>
+              <button class="logIn" mat-button routerLink="/signin">ĐĂNG NHẬP</button>
+            <button class="signUp" mat-button routerLink="/signup">ĐĂNG KÝ</button>
+            </ng-template>
+          </ng-template>
         </div>
-      </div>
+
       </div>
     </div>
   </div>

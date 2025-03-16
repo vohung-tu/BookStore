@@ -26,6 +26,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
     private bookService: BooksService
   ) {}
   books: BookDetails[] = [];
+  selectedBook?: BookDetails;
   // Đặt thời gian kết thúc flash sale (ví dụ: 30 00:00:00)
   flashSaleEnd: Date = new Date('2025-03-10T00:00:00');
 
@@ -43,8 +44,15 @@ export class HomepageComponent implements OnInit, OnDestroy {
     });
     this.updateCountdown();
 
-    this.bookService.getBook().subscribe((data) => {
+    this.bookService.getBooks().subscribe((data) => {
       this.books = data;
+    });
+  }
+
+  getBookDetails(id: string): void {
+    this.bookService.getBookById(id).subscribe((data) => {
+      this.selectedBook = data;
+      console.log('Chi tiết sách:', data);
     });
   }
 

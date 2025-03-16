@@ -26,10 +26,10 @@
         </mat-form-field>
       </div>
       <div class="forgot-password">
-        <mat-checkbox style="display: flex;">Ghi nhớ mật khẩu?</mat-checkbox>
+        <mat-checkbox style="display: flex;" formControlName="rememberMe">Ghi nhớ mật khẩu?</mat-checkbox>
         <a>Quên mật khẩu</a>
       </div>
-      <button mat-raised-button type="submit" [disabled]="signinForm.invalid">
+      <button mat-raised-button type="submit" [disabled]="signinForm.invalid || (isLoading$ | async)">
         Đăng Nhập
       </button>
   

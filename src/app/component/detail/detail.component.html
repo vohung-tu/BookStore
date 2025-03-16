@@ -38,23 +38,12 @@
 		
     <!-- Nút mua sách -->
     <div class="purchase-buttons">
-      <button mat-button class="add-to-cart">Thêm vào giỏ hàng</button>
+      <button mat-button class="add-to-cart" (click)="addToCart()">Thêm vào giỏ hàng</button>
       <button mat-button class="click-buy">Mua ngay</button>
     </div>
+
   </div>
 </div>
-
-<!-- Tabs cho Trích Đoạn và Mục Lục
-<div class="tabs" *ngIf="book">
-  <mat-tab-group>
-    <mat-tab label="TRÍCH ĐOẠN">
-      <p>Chưa có thông tin trích đoạn...</p>
-    </mat-tab>
-    <mat-tab label="MỤC LỤC">
-      <pre>Chưa có mục lục...</pre>
-    </mat-tab>
-  </mat-tab-group>
-</div> -->
 
 <!-- Nếu chưa tải xong -->
 <ng-template #loading>
